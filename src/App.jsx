@@ -1,33 +1,28 @@
 import "./App.css";
 import { store } from "./Redux/testReducer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
     const [counter, setCounter] = useState(0);
-    // 스토어 상태 출력
-    console.log(store.getState()); // { count: 0 }
     const handleButton = (e) => {
-        console.log(e.target.name);
         if (e.target.name === "plus") {
             store.dispatch({ type: "plus" });
             const { count } = store.getState();
-            console.log(count);
             setCounter(count);
         } else {
             store.dispatch({ type: "minus" });
             const { count } = store.getState();
-
             setCounter(count);
         }
     };
-    // 디스패치 테스트
-    // console.log(store.getState()); // { count: 1 }
-
-    // store.dispatch({ type: "minus" });
-    // console.log(store.getState()); // { count: 0 }
-
-    // store.dispatch({ type: "unknown" });
-    // console.log(store.getState()); // { count: 0 }
+    useEffect(() => {
+        const unsubscribe = store.subscribe(() => {
+            console.log("상태변화감지", store.getState());
+        });
+        return () => {
+            unsubscribe();
+        };
+    }, []);
 
     return (
         <div>
