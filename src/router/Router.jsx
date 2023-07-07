@@ -4,7 +4,6 @@ const Router = ({ children }) => {
   const [pathVariable, setPathVariable] = useState("/");
   const [renderComponent, setRenderComponent] = useState();
   window.addEventListener("popstate", function () {
-    console.log("popstate", history.state);
     const path = !!history.state ? history.state.data : "/";
     this.window.location.replace(path);
   });
