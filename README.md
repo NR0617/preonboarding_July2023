@@ -14,12 +14,7 @@
 │   │   └── testReducer.js
 │   ├── App.jsx
 │   └── main.jsx
-├── code
-│   ├── train.py
-│   ├── classify.py
-│   ├── model.py
-│   └── dataset.py
-└── run.sh
+└── index.html
 ```
 
 # 구현 방법
