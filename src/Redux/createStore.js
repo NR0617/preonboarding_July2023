@@ -19,9 +19,7 @@ export const createStore = (reducer) => {
     const subscribe = (func) => {
         const listenerId = listenerCounter++;
         currentListeners.set(listenerId, func);
-        console.log(currentListeners);
         return function unsubscribe() {
-            console.log(listenerId);
             currentListeners.delete(listenerId);
         };
     };
